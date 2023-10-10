@@ -10,22 +10,17 @@ pygame.init()
 #define colors
 white = (255,255,255)
 black = (0,0,0)
-red = (255,0,0)
-orange = (255,165,0)
 
 game_display = pygame.display.set_mode((0,0), pygame.FULLSCREEN) #(0, 0), pygame.FULLSCREEN
 pygame.display.set_caption("Physics Simulator")
 
 width, height = game_display.get_size()
 
-#surface = pygame.Surface((width, height), pygame.SRCALPHA)
-
 clock = pygame.time.Clock()
 
 pygame.mouse.set_system_cursor(pygame.SYSTEM_CURSOR_CROSSHAIR)
 
 #set icon and other assets
-#img = pygame.image.load('C:/Users/Lenovo/Desktop/Ucebne_materialy/Python programs/data/3body.png')
 def open_img(name):
     script_dir = os.path.dirname(os.path.abspath(name))
     relative_image_path = os.path.join(script_dir, 'data', name)
@@ -33,10 +28,6 @@ def open_img(name):
 
 img = open_img('3body.png')
 pygame.display.set_icon(img) 
-#start = pygame.image.load('C:/Users/Lenovo/Desktop/Ucebne_materialy/Python programs/data/Start.png')
-#cont = pygame.image.load('C:/Users/Lenovo/Desktop/Ucebne_materialy/Python programs/data/Continue.png')
-#qit = pygame.image.load('C:/Users/Lenovo/Desktop/Ucebne_materialy/Python programs/data/Quit.png')
-#physim = pygame.image.load('C:/Users/Lenovo/Desktop/Ucebne_materialy/Python programs/data/phys_sim.png')
 start = open_img('Start.png')
 cont = open_img('Continue.png')
 qit = open_img('Quit.png')
@@ -57,7 +48,7 @@ def draw_stars(displacement = np.array([0.0,0.0])):
     for i in range(1000):
         pygame.draw.circle(center = [star_pos_x[i], star_pos_y[i]]-displacement, radius = 1, color = white, surface = game_display)
      
-
+#Create main menu with simple functions, we also take arguments to make the continue button work
 def main_menu(camera_position = np.array([0.0,0.0]), m = np.ones(0), R = np.ones(0), pos = np.zeros((0,2)), v = np.zeros((0,2)), N = 0):
     pygame.mouse.set_system_cursor(pygame.SYSTEM_CURSOR_ARROW)
     while True:
@@ -103,7 +94,6 @@ def run_simulation(camera_position = np.array([0.0,0.0]), m = np.ones(0), R = np
     #simulation parameters
     stars = True
     c_speed = 5
-    #camera_position = np.array([0.0,0.0])
     lock = False
     lock_num = 0
     mass = 0.0
@@ -113,14 +103,7 @@ def run_simulation(camera_position = np.array([0.0,0.0]), m = np.ones(0), R = np
     #physics parameters
     G = 0.001
     exponent = 1
-    #N = 0
-    #m = np.ones(N)*10
-    #R = np.ones(N)
-    #pos = np.zeros((N,2))+[width/2, height/2]
-    #for i in range(N):
-    #    pos[i][0] += 400*math.cos(2*math.pi/N*i)
-    #    pos[i][1] += 400*math.sin(2*math.pi/N*i)
-    #v = np.zeros((N,2))
+
     close = False
 
     while not close:
