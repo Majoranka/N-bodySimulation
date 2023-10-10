@@ -58,7 +58,8 @@ def main_menu(camera_position = np.array([0.0,0.0]), m = np.ones(0), R = np.ones
         game_display.blit(start, (width/2 - 65, height/2 - 60))
         game_display.blit(cont, (width/2 - 100, height/2))
         game_display.blit(qit, (width/2 - 47, height/2 + 60))
-        #pygame.draw.rect(game_display, white, (width/2,0,1,height))
+        #pygame.draw.rect(game_display, white, (width/2,0,1,height)) to visualize the middle to fit the menu text, since the images are quite big
+        #we position the images manually, it's a bit awkward, but it's simple and fast
 
         if width/2 - 65 < pygame.mouse.get_pos()[0] < width/2 + 60 and height/2 - 60 < pygame.mouse.get_pos()[1] < height/2 - 15:
             pygame.mouse.set_system_cursor(pygame.SYSTEM_CURSOR_HAND)
@@ -114,15 +115,6 @@ def run_simulation(camera_position = np.array([0.0,0.0]), m = np.ones(0), R = np
         
         if stars:
             draw_stars(camera_position//20)
-
-        #pygame.display.update()
-
-        # Creating bodies
-        #keys = pygame.key.get_pressed()
-        #if keys[pygame.MOUSEBUTTONDOWN]:
-        #    pos = np.vstack((pos, np.array(pygame.mouse.get_pos())))
-        #    v = np.vstack((v, np.zeros(2)))
-        #    N += 1
 
         # Camera movement
         keys = pygame.key.get_pressed()
