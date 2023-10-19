@@ -46,3 +46,6 @@ The requirements to run the code are having Python (any version of Python 3 shou
 
 # Controls
 Left click spawns a small particle, while a right click can be used to move the camera. Holding the mouse button spawns arbitrarily big body. The camera can be moved using also the arrows and pressing spacebar.
+
+# Remarks
+Delta time is not used in the simulation, so that the computation is faster, though this can be very easily modified. The exponent used in the computation of gravity can also be easily modified by changing the exponent parameter in the code. To maximize performance (focusing on the actual simulation and perhaps realism) the stars can be turned off by changing the stars parameter to False.
